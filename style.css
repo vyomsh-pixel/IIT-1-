@@ -1,0 +1,112 @@
+/* General setup */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b0e1a;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 40px;
+  max-width: 800px;
+}
+
+/* Animated Headline */
+.headline {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 800;
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #00eaff);
+  background-size: 600% 600%;
+
+  /* Add both versions for compatibility */
+  background-clip: text;           /* Standard */
+  -webkit-background-clip: text;   /* For Chrome, Safari */
+  -webkit-text-fill-color: transparent;
+
+  animation: waveGradient 8s ease infinite;
+}
+
+
+@keyframes waveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Tagline */
+.tagline {
+  margin: 20px 0;
+  font-size: 20px;
+  color: rgba(255,255,255,0.8);
+}
+
+/* CTA button */
+.cta {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(255,0,200,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0,200,255,0.8);
+}
+
+/* Background stars (CSS-only) */
+.stars {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent;
+  background-image: radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+                    radial-gradient(1.5px 1.5px at 70% 80%, #fff, transparent),
+                    radial-gradient(1.8px 1.8px at 40% 60%, #fff, transparent),
+                    radial-gradient(2.2px 2.2px at 80% 20%, #fff, transparent);
+  background-repeat: no-repeat;
+  animation: twinkle 6s ease-in-out infinite alternate;
+  z-index: -1;
+}
+/* Moon + orbiting planet */
+.moon {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ddd, #999);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(200, 200, 255, 0.7);
+  z-index: -1;
+}
+
+.planet {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 20px; height: 20px;
+  background: radial-gradient(circle, #00eaff, #0066ff);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) translateX(70px);
+  animation: orbit 10s linear infinite;
+}
+
+@keyframes orbit {
+  0%   { transform: translate(-50%, -50%) rotate(0deg) translateX(70px) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+
+@keyframes twinkle {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
